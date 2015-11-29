@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="AngularSeed">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Todolist</title>
+	<script src="/js/main.js"></script>
+</head>
+<body ng-controller="listCtrl">
+	<h1>Todo items</h1>
+	<hr/>
+	<p ng-repeat="todo in todos" style="font-size: 24px">
+		<input type="button" value="Delete" ng-click="deleteTodo(todo._id)"/>
+		<input type="button" value="Edit" ng-show="selected_todo._id !== todo._id" ng-click="editTodo(todo)"/>
+		<input type="button" value="Submit" ng-show="selected_todo._id === todo._id" ng-click="updateSelectedTodo()"/>
+		<span ng-show="selected_todo._id !== todo._id">{{ todo.text }}</span>
+		<input type="text" ng-model="selected_todo.text" ng-show="selected_todo._id === todo._id"></input>
+	</p>
+	<hr/>
+	<h2>Add Item</h2>
+	<form>
+		<input type=text" ng-model="new_todo.text"/> <input type="button" value="Submit" ng-click="createTodo()"/>
+	</form>
+</body>
+</html>
